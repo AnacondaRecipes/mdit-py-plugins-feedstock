@@ -38,6 +38,9 @@ requirements:
 {% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_admon.py" %}
 {% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_deflist.py" %}
 {% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_texmath.py" %}
+# Not in main channel: markdown-it-py >=4.1.0
+{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_gfm.py::test_gfm_fixtures" %}
+{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_gfm_autolink.py::test_gfm_autolink_fixtures" %}
 
 test:
   source_files:
