@@ -1,15 +1,27 @@
 {% set name = "mdit-py-plugins" %}
-{% set version = "0.5.0" %}
+{% set version = "0.6.1" %}
+{% set ignore_tests = " --ignore=gh/tests/test_tasklists.py" %}
+{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_substitution.py" %}
+{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_field_list.py" %}
+{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_dollarmath.py" %}
+{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_container.py" %}
+{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_colon_fence.py" %}
+{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_attrs.py" %}
+{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_amsmath.py" %}
+{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_admon.py" %}
+{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_deflist.py" %}
+{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_texmath.py" %}
 
+# Missing pytest-regressions in main channel
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
   - url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-    sha256: f4918cb50119f50446560513a8e311d574ff6aaed72606ddae6d35716fe809c6
+    sha256: a2bca0f039f39dbd35fb74ae1b5f998608c437463371f0ff7f49a19a17a114d0
   - url: https://github.com/executablebooks/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: f9563423e4e4b4b4e4b6c8372b02cf403bc6adb7a5e1f8268ebab3c494732eda
+    sha256: cc58c0cd7264b3b1972773f14126666462047fbfffaa4ba59a287ee5e6858165
     folder: gh
 
 build:
@@ -25,19 +37,6 @@ requirements:
   run:
     - markdown-it-py >=2.0.0,<5.0.0
     - python
-
-# Missing pytest-regressions in main channel
-{% set ignore_tests = " --ignore=gh/tests/test_tasklists.py" %}
-{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_substitution.py" %}
-{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_field_list.py" %}
-{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_dollarmath.py" %}
-{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_container.py" %}
-{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_colon_fence.py" %}
-{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_attrs.py" %}
-{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_amsmath.py" %}
-{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_admon.py" %}
-{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_deflist.py" %}
-{% set ignore_tests = ignore_tests + " --ignore=gh/tests/test_texmath.py" %}
 
 test:
   source_files:
